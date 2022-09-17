@@ -26,7 +26,7 @@ for domain in $(lego --path /data/acme/ list -n); do
 	OVH_APPLICATION_KEY=$application_key \
 	OVH_APPLICATION_SECRET=$application_secret \
 	OVH_ENDPOINT=$endpoint \
-	lego --pem --email="${email}" --domains="$domain" --dns ovh --pem \ 
-		--path=/data/acme/ -a renew \ 
+	lego --pem --email="${email}" --domains="$domain" --dns ovh \
+		--path=/data/acme/ -a renew \
 		--renew-hook=/opt/scripts/acme-renew-hook.sh
 done
