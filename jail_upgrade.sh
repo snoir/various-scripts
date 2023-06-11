@@ -24,8 +24,8 @@ for jailname in $(jls -q name); do
         jail -rc $jailname
         freebsd-update -j $jailname --not-running-from-cron install
         jexec $jailname pkg upgrade -y || failed_pkg_upgrade_jails="$failed_pkg_upgrade_jails $jailname"
-	jexec $jailname pkg autoremove
-	jexec $jailname pkg clean
+	jexec $jailname pkg autoremove -y
+	jexec $jailname pkg clean -y
         jail -rc $jailname
 done
 
