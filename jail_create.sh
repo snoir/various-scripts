@@ -50,6 +50,7 @@ $jail_name {
        interface = ;
        exec.start = '/bin/sh /etc/rc';
        exec.stop = '/bin/sh /etc/rc.shutdown';
+       # Optional, devfs configuration
        devfs_ruleset = 4;
        mount;
        mount.devfs
