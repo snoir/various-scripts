@@ -39,3 +39,18 @@ FreeBSD-base: {
   enabled: yes
 }
 EOF
+
+echo "Minimal config for $jail_name:"
+cat <<EOF
+$jail_name {
+       host.hostname = "$jail_name";
+       path = "$zfs_dataset_root_mountpoint";
+       ip4.addr = ;
+       ip6.addr = ;
+       interface = ;
+       exec.start = '/bin/sh /etc/rc';
+       exec.stop = '/bin/sh /etc/rc.shutdown';
+       devfs_ruleset = 4;
+       mount;
+}
+EOF
