@@ -52,5 +52,6 @@ $jail_name {
        exec.stop = '/bin/sh /etc/rc.shutdown';
        devfs_ruleset = 4;
        mount;
+       mount.devfs
 }
 EOF
