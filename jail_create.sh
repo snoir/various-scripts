@@ -53,6 +53,6 @@ $jail_name {
        # Optional, devfs configuration
        devfs_ruleset = 4;
        mount;
-       mount.devfs
+       mount.devfs;
 }
 EOF
