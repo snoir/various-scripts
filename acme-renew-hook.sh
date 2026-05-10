@@ -6,12 +6,12 @@ set -eu
 
 services="nginx haproxy postfix dovecot prosody"
 
-if sysrc prosody_enable 2> /dev/null | grep YES > /dev/null 2>&1; then
-	prosodyctl --root cert import noir.im /data/acme/certificates
+if grep prosody_enable=\"YES\" /etc/rc.conf 2> /dev/null; then
+        prosodyctl --root cert import noir.im /data/acme/certificates
 fi
 
 for i in $services; do
-        if sysrc ${i}_enable 2> /dev/null | grep YES > /dev/null 2>&1 ; then
+        if grep ${i}_enable=\"YES\" /etc/rc.conf 2> /dev/null; then
                 service $i restart
         fi
 done
