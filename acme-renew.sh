@@ -7,7 +7,7 @@ set -e
 
 ovh_api_config_file="${API_CONFIG_FILE:-/opt/config/acme/ovh_api}"
 required_config="email consumer_key application_key application_secret endpoint"
-acme_path="/data/acme/"
+acme_path="/usr/local/etc/acme/"
 
 . $ovh_api_config_file
 
@@ -21,12 +21,12 @@ done
 
 set -u
 
-for domain in $(lego --path /data/acme/ list -n); do
+for domain in $(lego --path $acme_path list -n); do
 	OVH_CONSUMER_KEY=$consumer_key \
 	OVH_APPLICATION_KEY=$application_key \
 	OVH_APPLICATION_SECRET=$application_secret \
 	OVH_ENDPOINT=$endpoint \
 	lego --pem --email="${email}" --domains="$domain" --dns ovh \
-		--path=/data/acme/ -a renew \
+		--path=$acme_path -a renew \
 		--renew-hook=/opt/scripts/acme-renew-hook.sh
 done
