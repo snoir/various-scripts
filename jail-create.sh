@@ -53,7 +53,6 @@ $jail_name {
 	allow.chflags;
 	# Optional, devfs configuration
 	devfs_ruleset = 4;
-	mount;
 	mount.devfs;
 }
 EOF
